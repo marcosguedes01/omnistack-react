@@ -2,7 +2,10 @@ import React, { Component } from 'react';
 import io from 'socket.io-client';
 import api from '../services/api';
 
-import { View, Text, Image, StyleSheet, TouchableOpacity, FlatList } from 'react-native';
+import { Dimensions } from 'react-native';
+import Image from 'react-native-scalable-image';
+
+import { View, Text, StyleSheet, TouchableOpacity, FlatList } from 'react-native';
 
 import camera from '../assets/camera.png';
 import more from '../assets/more.png';
@@ -68,7 +71,7 @@ export default class Feed extends Component {
                             <Image source={more} />
                         </View>
 
-                        <Image style={styles.feedImage} source={{ uri: `http://10.0.0.4:3333/files/${item.image}`}} />
+                        <Image width={Dimensions.get('window').width} style={styles.feedImage} source={{ uri: `http://10.0.0.4:3333/files/${item.image}`}} />
 
                         <View style={styles.feedItemFooter}>
                             <View style={styles.actions}>
@@ -118,8 +121,6 @@ const styles = StyleSheet.create({
         marginTop: 2
     },
     feedImage: {
-        width: '100%',
-        height: 400,
         marginVertical: 15,
     },
     feedItemFooter: {
